@@ -1,0 +1,147 @@
+.publication-container {
+  width: 100%;
+  /*border: 1px solid #666666;*/
+}
+
+.add-button-container {
+  /*border: 1px solid #666666;*/
+  margin-bottom: 30px;
+}
+
+.publication-item {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  padding-top: 10px;
+  padding-left: 8px;
+}
+
+.publication-cells-row-1,
+.publication-cells-row-2 {
+  display: table-cell;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  width: 25%;
+  /*border: 1px solid #ddd;*/
+}
+
+.publication-cells-row-1 {
+  padding-bottom: 20px;
+}
+
+.publication-cell-2-row-2,
+.publication-cell-4-row-2 {
+  text-align: center;
+}
+
+.publication-cell-1-row-2 {
+  width: 18%;
+}
+
+.publication-cell-2-row-2 {
+  width: 10%;
+}
+
+.publication-cell-3-row-2 {
+  width: 40%;
+}
+
+.publication-cell-4-row-2 {
+  width: 40%;
+}
+
+.datetime-field {
+  width: 40%;
+  float: left;
+  margin-right: 10px;
+}
+
+.publication-order-number {
+  width: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 15%;
+  border-color: #d4d4d4;
+  background-color: #ebebeb;
+}
+
+.ordering-div {
+  float: right;
+}
+
+.first-item {
+  margin-right: 16px;
+}
+
+.last-item {
+  margin-left: 16px;
+}
+
+.mandatory {
+  border: 1px solid #9d261d !important;
+  background-color: #f2dede !important;
+}
+
+.item-label,
+.item-space {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.item-space {
+  display: block;
+}
+
+.publication-pagination-inactive {
+  display: none;
+}
+
+.publication-pagination {
+}
+
+.publication-pagination-browser {
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.publication-pagination-browser .current-page-number,
+.publication-pagination-browser .page-number {
+  border: 1px solid #ddd;
+}
+
+.publication-pagination-browser td {
+  padding: 5px;
+  margin: 5px;
+}
+
+div[class$='-odd'] {
+  background-color: #f1f7ff;
+}
+
+div[class$='-even'] {
+  background-color: #fff;
+}
+
+.radio-option {
+  margin-left: 5px;
+  margin-right: 15px;
+}
+
+.clear-btn {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  margin-right: -1px !important;
+}
+
+.select-btn {
+  float: left;
+  margin-right: 15px;
+}
+
+.selected-item-name {
+  width: 200px;
+}
+
