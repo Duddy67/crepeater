@@ -8,7 +8,7 @@ CAjax = (function () {
      * 
      * @return  void
      */
-    var Ajax = function (params, queryParams) {
+    const Ajax = function (params, queryParams) {
         // Initializes the XMLHttpRequest object.
 	this._xhr = new XMLHttpRequest();
 

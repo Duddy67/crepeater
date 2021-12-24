@@ -1,6 +1,6 @@
 CRepeater = (function () {
 
-    var Repeater = function (props) {
+    const Repeater = function (props) {
 
         this._itemType = props.item;
 	this._itemTypeUpperCase = this._itemType.slice(0,1).toUpperCase() + this._itemType.slice(1);

@@ -145,3 +145,6 @@ div[class$='-even'] {
   width: 200px;
 }
 
+.select2-container {
+  width: 439.35px !important;
+}
