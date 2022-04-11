@@ -182,7 +182,7 @@ CRepeater = (function () {
 	    // Calls a callback function to execute possible tasks before the item deletion.
 	    // N.B: Check first that the function has been defined. 
 	    if (typeof window['beforeRemoveItem'] === 'function') {
-	        window['beforeRemoveItem'](idNb, this.itemType);
+	        window['beforeRemoveItem'](idNb, this._itemType);
 	    }
 
 	    // Removes the item from its div id.
@@ -214,7 +214,7 @@ CRepeater = (function () {
 	    // Calls a callback function to execute possible tasks after the item deletion.
 	    // N.B: Check first that the function has been defined. 
 	    if (typeof window['afterRemoveItem'] === 'function') {
-		window['afterRemoveItem'](idNb, this.itemType);
+		window['afterRemoveItem'](idNb, this._itemType);
 	    }
 	},
 
@@ -238,7 +238,7 @@ CRepeater = (function () {
 		    cellNb = j + 1;
 		    let attribs = {
 			id: this._itemType+'-row-'+rowNb+'-cell-'+cellNb+'-'+idNb, 
-			class: this._itemType+'-cells-row-'+rowNb+' '+this.itemType+'-cell-'+cellNb+'-row-'+rowNb
+			class: this._itemType+'-cells-row-'+rowNb+' '+this._itemType+'-cell-'+cellNb+'-row-'+rowNb
 		    };
 
 		    item.appendChild(this.createElement('div', attribs));
