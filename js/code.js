@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    let ajax = new CAjax.init({
+    let ajax = new C_Ajax.init({
 	    method: 'GET',
 	    url: baseUrl+'php/request.php',
 	    dataType: 'json'
     });
 
-    ajax.process(getAjaxResult);
+    ajax.run(getAjaxResult);
 
 
     function getAjaxResult(result) {
