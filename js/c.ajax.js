@@ -48,11 +48,13 @@ const C_Ajax = (function() {
         _xhr = new XMLHttpRequest();
 
         // Checks the given parameters for the current Ajax request and modified them if needed.
-        _params.method = params.method === undefined || (params.method != 'GET' && params.method != 'POST') ? 'GET' : params.method;
+        _params.method = params.method === undefined || (params.method.toUpperCase() !== 'GET' && params.method.toUpperCase() !== 'POST') ? 'GET' : params.method.toUpperCase();
         _params.url = params.url === undefined ? window.location.href : params.url;
         _params.dataType = params.dataType === undefined || (params.dataType != 'json' && params.dataType != 'xml' && params.dataType != 'text') ? 'text' : params.dataType;
         _params.async = params.async === undefined ? true : params.async;
         _params.indicateFormat = params.indicateFormat === undefined ? false : params.indicateFormat;
+        _params.header = params.header === undefined ? {'Content-Type': 'application/x-www-form-urlencoded'} : params.header;
+        _params.data = params.data === undefined ? null : params.data;
 
         // Prepares the Ajax request with the given parameters and data.
 
@@ -93,8 +95,8 @@ const C_Ajax = (function() {
 
         if (_params.method == 'POST') {
             // Send the proper header information along with the request.
-            _xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            _xhr.send(queryString);
+            _xhr.setRequestHeader(Object.keys(_params.header)[0], _params.header[Object.keys(_params.header)[0]]);
+            _xhr.send(_params.data);
         }
         else {
             // Always null with the GET method.
@@ -163,4 +165,5 @@ const C_Ajax = (function() {
     }
 
 })();
+
 
