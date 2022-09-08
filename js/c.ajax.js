@@ -53,7 +53,7 @@ const C_Ajax = (function() {
         _params.dataType = params.dataType === undefined || (params.dataType != 'json' && params.dataType != 'xml' && params.dataType != 'text') ? 'text' : params.dataType;
         _params.async = params.async === undefined ? true : params.async;
         _params.indicateFormat = params.indicateFormat === undefined ? false : params.indicateFormat;
-        _params.header = params.header === undefined ? {'Content-Type': 'application/x-www-form-urlencoded'} : params.header;
+        _params.headers = params.headers === undefined ? {} : params.headers;
         _params.data = params.data === undefined ? null : params.data;
 
         // Prepares the Ajax request with the given parameters and data.
@@ -94,8 +94,11 @@ const C_Ajax = (function() {
         }
 
         if (_params.method == 'POST') {
-            // Send the proper header information along with the request.
-            _xhr.setRequestHeader(Object.keys(_params.header)[0], _params.header[Object.keys(_params.header)[0]]);
+            // Send the headers along with the request.
+            for (const [header, value] of Object.entries(_params.headers)) {
+                _xhr.setRequestHeader(header, value);
+            }
+
             _xhr.send(_params.data);
         }
         else {
@@ -119,40 +122,35 @@ const C_Ajax = (function() {
             let params = _params;
 
             xhrRef.onreadystatechange = function () {
-
                 // The Ajax request is done.
                 if (xhrRef.readyState === 4) {
-                    // The Ajax request has succeeded.
-                    if (xhrRef.status === 200) {
-                        // By default returns response as plain text.
-                        let response = xhrRef.responseText;
+                    // By default returns response as plain text.
+                    let response = xhrRef.responseText;
 
-                        // Formats response according to the given dataType.
-                        if (params.dataType == 'json') {
-                            try {
-                                response = JSON.parse(xhrRef.responseText);
-                            }
-                            catch (e) {
-                                console.log('Parsing error: '+e);
-                                return false;
-                            }
+                    // Formats response according to the given dataType.
+                    if (params.dataType == 'json') {
+                        try {
+                            response = JSON.parse(xhrRef.responseText);
                         }
-                        else if (params.dataType == 'xml') {
-                            response = xhrRef.responseXML;
-                        }
-
-                        // To get header information in debugging mode.
-                        //console.log(xhrRef.getAllResponseHeaders());
-
-                        if (callback !== undefined) {
-                            // Calls the given callback function.
-                            callback(response);
+                        catch (e) {
+                            console.log('Parsing error: '+e);
+                            return false;
                         }
                     }
-                    // The Ajax request has failed.
-                    else {
+                    else if (params.dataType == 'xml') {
+                        response = xhrRef.responseXML;
+                    }
+
+                    if (xhrRef.status !== 200) {
                         console.log(xhrRef.status + ': ' + xhrRef.statusText);
-                        return false;
+                    }
+
+                    // To get header information in debugging mode.
+                    //console.log(xhrRef.getAllResponseHeaders());
+
+                    if (callback !== undefined) {
+                        // Calls the given callback function.
+                        callback(xhrRef.status, response);
                     }
                 }
             }
@@ -165,5 +163,4 @@ const C_Ajax = (function() {
     }
 
 })();
-
 

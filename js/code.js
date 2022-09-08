@@ -43,14 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ajax.run(getAjaxResult);
 
 
-    function getAjaxResult(result) {
-      if(result.success === true) {
+    function getAjaxResult(status, result) {
+      if(status === 200) {
 	  result.data.forEach(publication => { 
 	      repeater.createItem(publication) 
 	  });
       }
       else {
-	  alert('Error: '+result.message);
+	  alert('Error: '+result.response);
       }
     }
 
