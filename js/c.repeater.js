@@ -18,7 +18,6 @@ C_Repeater = (function () {
             elements[i].addEventListener('click', function() {
                 // Here 'this' refers to the element.
                 let pageNb = this.dataset.pageNb;
-                // _this refers to the C_Repeater object.
                 _updatePagination(pageNb);
             }, true);
         }
