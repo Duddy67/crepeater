@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let path = getUrl.pathname.replace(pathParts[pathParts.length-1],'');
     const baseUrl = getUrl.protocol + '//' + getUrl.host + '/' + path;
 
-    let repeater = new CRepeater.init({
+    let repeater = new C_Repeater.init({
 		item:'publication',
 		ordering: true,
 		rootLocation: baseUrl,
